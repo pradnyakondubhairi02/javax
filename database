@@ -1,0 +1,125 @@
+package basic;
+import java.util.*;
+
+class student{
+	private String name;
+	private int age;
+	
+	public void getdata() {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("\nEnter name:");
+		name=sc.next();
+		System.out.println("Enter age:");
+		age=sc.nextInt();
+		
+	}
+	
+	public void display() {
+		System.out.println("\nName is " +name);
+		System.out.println("Age is " +age );
+	}
+}
+
+public class tut1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int record;
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter number of records:");
+		record=sc.nextInt();
+		
+
+		
+		student obj[]=new student[10];
+		int i,search,modify,delete,n;
+		
+		for(i=0;i<record;i++)
+		{
+			obj[i]=new student();
+		}
+		
+		
+		do {
+		     System.out.println("\nEnter your Choice: \n1.Input Record \n2.Display Record \n3.search Record \n4.Modify Record \n5.Delete Record \n6.Insert Record");
+		     n=sc.nextInt();
+	         switch(n)
+	    
+	         {
+	    
+	              case(1):
+		            for(i=0;i<record;i++)
+		            {
+			          obj[i].getdata();
+			          
+		            }
+	                break;
+	      
+	              case(2): 
+		             for(i=0;i<record;i++)
+		             {
+			           obj[i].display();
+			           
+		             }
+	                 break;
+	      
+	              case(3):
+		              System.out.println("Enter record which you want to search:");
+		              search=sc.nextInt();
+		              obj[search-1].display();
+		              break;
+		
+	              case(4):
+		                System.out.println("Enter record which you want to Modify");
+		                modify=sc.nextInt();
+		                obj[modify-1].getdata();
+		
+		                System.out.println("Your modified record is");
+		                for(i=0;i<record;i++)
+		                {
+			              obj[i].display();
+			             
+		                }
+		                break;
+		
+	              case(5):
+	                    System.out.println("Enter record which you want to delete");
+		                delete=sc.nextInt();
+		                
+		                for(i=delete; i<record; i++) {
+		                	obj[i-1]=obj[i];
+		                }
+		                record=record-1;
+		                
+		                for(i=0;i<record;i++)
+		                {
+			              obj[i].display();
+		                }
+		                
+		                break;
+		     
+	             case(6):
+		
+		                System.out.println("Enter record which you want to add");
+	
+	               
+		                obj[record].getdata();
+		                record=record+1;
+		
+		                for(i=0;i<record;i++)
+		                {
+			                obj[i].display();
+		                }
+		                
+		                break;
+		     
+		     
+	         }
+	         
+		}while(n!=6);
+		
+		
+	}
+
+}
