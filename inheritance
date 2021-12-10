@@ -1,0 +1,102 @@
+//heirarchial type inheritance
+package oop1;
+import java.util.*;
+abstract class shape {
+	
+	      abstract public void compute_area(); //do_nothing method 	  
+	    	  
+	      abstract public void display();   //do nothing method
+	    	 
+}
+	class rectangle extends shape                     
+	{
+		private float l,b;
+		public void compute_area()   {
+			System.out.println("enter the length & breadth of rectangle:");
+			Scanner sc=new Scanner(System.in);
+			l=sc.nextFloat();
+			b=sc.nextFloat();
+		}
+			public void display()  {
+			System.out.println("area of rectangle is"+l*b);
+		}
+	}
+	
+	class triangle extends shape  
+	{
+		private double b,h;
+		
+	
+		public void compute_area()   {
+			System.out.println("enter the base & height of triangle:");
+			Scanner sc=new Scanner(System.in);
+			b=sc.nextFloat();
+			h=sc.nextFloat();
+		}	
+	     public void display()   {
+			System.out.println("area of triangle is:"+(0.5*b*h));
+		}
+	}
+	
+	class circle extends shape   {
+		private double r;
+		
+		public void compute_area()  {
+			System.out.println("enter the radius of circle :");
+			Scanner sc=new Scanner (System.in);
+			r=sc.nextFloat();
+			 
+		}
+		public void display()   {
+			System.out.println("area of circle is:"+3.14*r*r);
+		}
+	}
+
+
+public class assn {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner (System.in);
+		int ch;
+		do  {
+		System.out.println("enter your choice:");
+		System.out.println("\n1.for rectangle  \n2.for triangle  \n3.for circle :");
+		ch=sc.nextInt();
+		switch(ch)   {
+		case 1:
+			shape obj=new rectangle();          //runtime polymorphism
+	         obj.compute_area();
+	         break;
+	         
+		case 2:
+		    shape obj1=new triangle();
+	         obj1.compute_area();
+	         break;
+	         
+		case 3:
+			   shape obj2=new circle();
+		       obj2.compute_area();
+		       break;
+		}
+		
+     }while(ch!=0);
+		
+		/*case 1:                          //compile time polymorphism->method overloading
+			rectangle r=new rectangle();
+			r.getdata();
+			r.compute_area();
+          
+		case 2:
+			triangle t=new triangle();
+			t.getdata();
+            t.compute_area();
+            
+		case 3:
+			circle c=new circle();
+			c.getdata();
+            c.compute_area();
+}
+}while(ch!=0);*/
+	}
+}
