@@ -1,0 +1,104 @@
+import java.util.*;
+
+class complex {
+	private float real , img ;
+	
+	//default constructor
+	public complex()   {
+		real=0.0f;
+		img=0.0f;
+	}
+	
+	//parameter constructor
+	public complex (float r,float i) 
+	{
+		real=r;
+		img=i;
+	}
+
+	
+	
+	public void addition(complex x ,complex y){
+		real=x.real + y.real;
+		img=x.img + y.img;
+	}
+	
+	public void substraction(complex x ,complex y) {
+		real=x.real-y.real;
+		img=x.img-y.img;
+	}
+	
+	public void multiplication(complex x ,complex y){
+		real=((x.real*y.real)-(x.img*y.img));
+		img=((x.real*y.img)+(x.img*y.real));	
+	}
+	
+	public void division(complex x ,complex y) {
+		real=((x.real*y.real)+(x.img*y.img))/((y.real*y.real)+(y.img*y.img));
+		img=((y.real*x.img)-(x.real*y.img))/((y.real*y.real)+(y.img*y.img));
+	}
+	
+	
+	public void display() {
+		System.out.println(" The complex no is "+real+" + "+img+"i");
+	}
+}	
+	public class calculator{
+	public static void main(String[] args) {
+		float real1,img1,real2,img2;
+		Scanner sc= new Scanner(System.in);
+		System.out.println("first complex no. is:");
+		real1=sc.nextFloat();
+		img1=sc.nextFloat();
+		System.out.println("second complex no. is:");
+		real2=sc.nextFloat();
+		img2=sc.nextFloat();
+		complex c1=new complex (real1,img1);
+	    complex c2=new complex(real2,img2);
+	   complex c3=new complex(0,0);
+
+		System.out.println("first complex no is:");
+		c1.display();
+		System.out.println("second complex no is:");
+		c2.display();
+       
+		boolean a=true;
+		while(a)
+		{
+			System.out.println("\n1.addition \n2.substraction \n3.multiplication  \n4.division \n5.invalid input!");
+			System.out.println("enter your choice:");
+			int n=sc.nextInt();
+			switch(n)   {
+			case 1:
+				c3.addition(c2, c1);
+				System.out.println("\nThe addition of two complex number is  :");
+				c3.display();
+				break;
+				
+			case 2:
+				c3.substraction(c1, c2);
+				System.out.println("\nThe Substraction of two complex number is  :");
+				c3.display();
+				break;
+				
+			case 3:
+				c3.multiplication(c1, c2);
+				System.out.println("\nThe Multiplication of two complex number is  :");
+				c3.display();
+				break;
+				
+			case 4:
+				c3.division(c1, c2);
+				System.out.println("\nThe Division of two complex number is  :");
+				c3.display();
+				break;
+			
+			default:
+				System.out.println("invalid input!");
+			}
+			
+			}
+		
+		
+	}
+	}
