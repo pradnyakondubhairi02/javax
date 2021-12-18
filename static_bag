@@ -1,0 +1,81 @@
+package assn2;
+
+import java.util.Scanner;
+
+import java1.ball;
+
+class ball {
+	private String colour;
+	private int weight;
+	
+	private static int total_wt;
+	private static int count;
+
+	public ball()   {
+		 colour="red";
+	     weight=10;
+	     total_wt=total_wt+weight;
+	     count++;
+	
+	}
+	public ball (int w)   {
+		 colour="red";
+		 weight=w;
+		 total_wt=total_wt+weight;
+	     count++;
+	
+	}
+	public ball (String r)   {
+	     colour=r;
+		 weight=10;
+		 total_wt=total_wt+weight;
+	     count++;
+		
+	}
+	public ball(String r,int w)   {
+		 colour=r;
+		 weight=w;
+		 total_wt=total_wt+weight;
+	     count++;
+		
+	}
+	public void display()   {
+		System.out.println("total weight of balls is:" +total_wt);
+		System.out.println("number of balls are:" + count);
+	}
+};
+
+public class bag {
+	public static void main(String[]  args)     {
+		ball obj[]=new ball[10];
+		for(int i=0;i<10;i++)   {
+			obj[i]=new ball();
+		}
+		int wt;
+		String col;
+		Scanner sc=new Scanner(System.in);
+
+		System.out.println("weight is:");
+		wt=sc.nextInt();
+		
+	}
+}
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
