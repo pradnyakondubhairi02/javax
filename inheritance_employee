@@ -1,0 +1,159 @@
+package basics;
+
+import java.util.*;
+
+class employee
+{
+	private String name,address,email_id;
+	private int id;
+	private long mob_no;
+	
+	public employee()  
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("name of employee");
+		name=sc.next();
+		System.out.println("ID of employee");
+		id=sc.nextInt();
+		System.out.println("email id of employee");
+		email_id=sc.next();
+		System.out.println("mobile no of employee");
+		mob_no=sc.nextLong();
+	}
+	public void display()
+	{
+		System.out.println("name is:"+ name);
+		System.out.println("ID is:" + id);
+		System.out.println("email is:" + email_id);
+		System.out.println("mobile no is:" + mob_no);
+	}
+}
+
+class programmer extends employee
+{
+	private int basic_pay;
+	public programmer()
+	{
+		super();
+		Scanner sc=new Scanner(System.in);
+		System.out.println("basic pay of employee");
+		basic_pay=sc.nextInt();
+		
+	}
+	public void salary()
+	{
+		double gross_sal,total_sal;
+		gross_sal=(basic_pay+0.97*basic_pay+0.1*basic_pay+0.12* basic_pay+0.001*basic_pay);
+		total_sal=(basic_pay+0.97*basic_pay+0.1*basic_pay);
+		super.display();
+		System.out.println("gross salary is:" + gross_sal);
+		System.out.println("net salary is:" +  total_sal);
+	}
+}
+
+class team_lead extends employee
+{
+	private int basic_pay;
+	
+	public team_lead()
+	{
+		super();
+		Scanner sc=new Scanner(System.in);
+		System.out.println("basic pay");
+		basic_pay=sc.nextInt();
+	}
+	public void salary()
+	{
+		double gross_sal,total_sal;
+		gross_sal=(basic_pay+0.97*basic_pay+0.1*basic_pay+0.12* basic_pay+0.001*basic_pay);
+		total_sal=(basic_pay+0.97*basic_pay+0.1*basic_pay);
+		super.display();
+		System.out.println("gross salary is:" + gross_sal);
+		System.out.println("net salary is:" + total_sal);
+	}
+	
+}
+class ass_project extends employee
+{
+	private int basic_pay;
+	
+	public ass_project()
+	{
+		super();
+		Scanner sc=new Scanner(System.in);
+		System.out.println("basic pay");
+		basic_pay=sc.nextInt();
+	}
+	public void salary()
+	{
+		double gross_sal,total_sal;
+		gross_sal=(basic_pay+0.97*basic_pay+0.1*basic_pay+0.12* basic_pay+0.001*basic_pay);
+		total_sal=(basic_pay+0.97*basic_pay+0.1*basic_pay);
+		super.display();
+		System.out.println("gross salary is:" + gross_sal);
+		System.out.println("net salary is:" + total_sal);
+	}
+	
+}
+class project_man extends employee
+{
+	private int basic_pay;
+	
+	public project_man()
+	{
+		super();
+		Scanner sc=new Scanner(System.in);
+		System.out.println("basic pay");
+		basic_pay=sc.nextInt();
+	}
+	public void salary()
+	{
+		double gross_sal,total_sal;
+		gross_sal=(basic_pay+0.97*basic_pay+0.1*basic_pay+0.12* basic_pay+0.001*basic_pay);
+		total_sal=(basic_pay+0.97*basic_pay+0.1*basic_pay);
+		super.display();
+		System.out.println("gross salary is:" + gross_sal);
+		System.out.println("net salary is:" + total_sal);
+	}
+}
+
+public class still_trying
+{
+	public static void main(String[] args)  
+	{
+		int ch;
+		Scanner sc=new Scanner(System.in);
+		
+		do {
+			System.out.println("enter your choice");
+			System.out.println("\n1.programmer \n2.tem lead \n3.assistant manager \n4.project manager \n5.exit");
+			ch=sc.nextInt();
+			
+			switch(ch)
+			{
+			case 1:
+				programmer p=new programmer();
+				p.salary();
+				break;
+				
+			case 2:
+				team_lead t=new team_lead();
+				t.salary();
+				break;
+				
+			case 3:
+				ass_project a =new ass_project();
+				a.salary();
+				break;
+				
+			case 4:
+				project_man pm=new project_man();
+				pm.salary();
+				break;
+				
+			case 5:
+				System.exit(0);
+			}
+		}while(ch!=0);
+	}
+}
