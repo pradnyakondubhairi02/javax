@@ -1,0 +1,174 @@
+problem:
+     Bank Management System
+Problem Statement: Assume that a bank maintains two kinds of accounts for customers, one called as saving account and the other as current account. The saving account provides compound interest and withdrawal facility. The current account provides cheque book facility but no interest. Current account holders should also maintain the minimum balance and if the balance falls below this level, a service charge is imposed.
+Design a class account that stores customer name, account number and type of account. From this derive the classes cur_acct and sav_acct to make them more specific to their requirements. Include necessary methods in order to achieve following tasks:
+Accept deposit from the customer and update the balance
+Display the balance
+Compute and deposit interest.
+Permit withdrawal and update the balance
+Check the minimum balance, impose penalty, and update the balance..
+
+
+
+
+        ***code:***
+package basicDemo;
+
+import java.util.*;
+
+class account{
+	private String name;
+	private int accnum;
+	public int amount;
+	
+	public void getdata() {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("\nEnter Name:");
+		name=sc.next();
+		System.out.println("\nEnter Account Number:");
+		accnum=sc.nextInt();
+		System.out.println("\nEnter Amount:");
+		amount=sc.nextInt();
+	}
+	
+	public void display() {
+		System.out.println("\n Name:"+name);
+		System.out.println("\n Account Number:"+accnum);
+		System.out.println("\n Amount:"+amount);
+	}
+	
+}
+
+class cur_acc extends account{
+	private int withdraw;
+	private int deposit;
+	private int penalty;
+	
+	public void withdrawl() {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Amount to withdraw:");
+		withdraw=sc.nextInt();
+		amount=amount-withdraw;
+		System.out.println("Account status after withdrawl is:");
+		display();
+	}
+	
+	public void add() {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Amount to Deposit:");
+		deposit=sc.nextInt();
+		amount=amount+deposit;
+		System.out.println("Account status after deposit is:");
+		display();
+	}
+	
+	public void check() {
+		if(amount<1000) {
+			System.out.println("Amount is below Rs.1000");
+			amount=amount-200;
+			System.out.println("As a penalty Rs.200 is deducted from your account");
+		}
+		else {
+			
+		}
+	}
+}
+
+class sav_acc extends account{
+	private int deposit;
+	private int withdraw;
+	private int interest;
+	
+	public void add() {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Amount to Deposit:");
+		deposit=sc.nextInt();
+		amount=amount+deposit;
+		System.out.println("Account status after deposit is:");
+		display();
+	}
+	
+	public void withdrawl() {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Amount to withdraw:");
+		withdraw=sc.nextInt();
+		amount=amount-withdraw;
+		System.out.println("Account status after withdrawl is:");
+		display();
+	}
+	
+	public void intrst() {
+		interest=(amount*2)/100;
+		amount=amount+interest;
+		System.out.println("Account status after Interest is:");
+		display();
+	}
+}
+public class bank_assn2 {
+
+	public static void main(String[] args) {
+		int ch,ch1,ch2;
+		Scanner sc=new Scanner(System.in);
+		cur_acc cu=new cur_acc();
+		sav_acc sv=new sav_acc();
+		
+		System.out.println("\n1.Current Account \n2.Savings Account\nEnter your choice:");
+		ch=sc.nextInt();
+		
+		if(ch==1) {
+			cu.getdata();
+			cu.check();
+			do {
+			System.out.println("\n1.Display \n2.Deposit \n3.Withdraw money \n4.Exit \n Enter your choice:");
+			ch1=sc.nextInt();
+			switch(ch1) {
+			case 1:
+				cu.display();
+				break;
+			case 2:
+				cu.add();
+				break;
+			case 3:
+				cu.withdrawl();
+				break;
+			case 4:
+				break;
+//			default:
+//				System.out.println("Enter a Valid option!");
+			}
+		}while(ch1!=4);
+			
+	}
+		else if(ch==2) {
+			sv.getdata();
+			do {
+				System.out.println("\n1.Display \n2.Deposit \n3.Withdraw money \n4.Check Interest \n5.Exit  \nEnter your choice:");
+				ch2=sc.nextInt();
+				switch(ch2) {
+				case 1:
+					sv.display();
+					break;
+				case 2:
+					sv.add();
+					break;
+				case 3:
+					sv.withdrawl();
+					break;
+				case 4:
+					sv.intrst();
+					break;
+				case 5:
+					break;
+				default:
+					System.out.println("Enter a Valid option!");
+				
+				
+				}
+			}while(ch2!=5);
+		}
+		else {
+			System.out.println("Enter a Valid option!");
+		}
+	}
+	
+}
