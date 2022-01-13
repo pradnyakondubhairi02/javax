@@ -1,0 +1,65 @@
+package package1;
+import java.util.*;
+import java.lang.*;
+class Validate_data_type extends RuntimeException{
+	Validate_data_type(String msg){
+		super(msg);
+	}
+}
+public class arraylist_char {
+
+	public static void main(String[] args) {
+		int choice,n;
+		char num;
+		boolean a;
+		ArrayList<Character> obj=new ArrayList<Character>();
+		Scanner sc=new Scanner(System.in);
+		do {
+			System.out.println("What do you want to do \n1) for adding character \n2) for display arraylist \n3) for delete \n4) for modify");
+			choice=sc.nextInt();
+			switch(choice) {
+			case 1:
+				System.out.println("how may character you want to add");
+				n=sc.nextInt();
+				try {
+				for(int i=0;i<n;i++) {
+					num=sc.next().charAt(0);
+					a=Character.isAlphabetic(num);
+					if(a==false) {
+					throw new Validate_data_type("sorry wrong data type");
+					
+					}
+					else {
+						obj.add(num);
+					}
+	            }
+				}
+				catch(Exception e){
+					System.out.println(e);
+				}
+				break;
+			case 2:
+				for(int i=0;i<obj.size();i++) {
+					System.out.println(obj.get(i));
+				}
+				break;
+			case 3:
+				System.out.println("Which index do you want to delete");
+				n=sc.nextInt();
+				obj.remove(n-1);
+				break;
+			case 4:
+				System.out.println("which index do you want to modify");
+				n=sc.nextInt();
+				System.out.println("add the character do you want to add");
+				num=sc.next().charAt(0);
+				obj.remove(n-1);
+				obj.add(n-1, num);
+				break;
+			case 5:
+				System.exit(0);
+			}
+		}while(choice!=5);
+	}
+
+}
